@@ -44,7 +44,7 @@ func set_skin(skin: GameEnums.CardSkin) -> void:
 
 func get_front_texture_path() -> String:
 	var folder := GameEnums.skin_folder(current_skin)
-	return "res://assets/cards/%s/%s_%s.png" % [
+	return "res://assets/sprites/cards/%s/%s_%s.png" % [
 		folder,
 		GameEnums.suit_key(suit),
 		GameEnums.rank_key(rank)
@@ -52,7 +52,7 @@ func get_front_texture_path() -> String:
 
 func get_back_texture_path() -> String:
 	var folder := GameEnums.skin_folder(current_skin)
-	return "res://assets/cards/%s/back.png" % folder
+	return "res://assets/sprites/cards/%s/back.png" % folder
 
 func is_same_suit(other: CardData) -> bool:
 	return suit == other.suit

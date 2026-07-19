@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://23um1352au52"]
+
+[ext_resource type="Script" uid="uid://c41v5kibt2hwn" path="res://src/players/player_hand.gd" id="1_b1pc5"]
+[ext_resource type="PackedScene" uid="uid://dccg0ne1r0bu7" path="res://src/cards/Card.tscn" id="2_ak0lu"]
+
+[node name="PlayerHand" type="Node2D"]
+script = ExtResource("1_b1pc5")
+card_scene = ExtResource("2_ak0lu")
+card_spacing = 90.0
+max_cards = 5

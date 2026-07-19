@@ -15,12 +15,16 @@ var is_face_up: bool = false
 var is_selected: bool = false
 var is_interactable: bool = true
 
+func _ready() -> void:
+	_update_textures()
+	_update_visibilities()
+
 func setup(data: CardData) -> void:
 	card_data = data
 	_update_textures()
 
 func _update_textures() -> void:
-	if card_data == null:
+	if card_data == null or front_sprite == null:
 		return
 	
 	var front_path := card_data.get_front_texture_path()
@@ -36,11 +40,21 @@ func _update_textures() -> void:
 	else:
 		push_warning("No se encontró textura trasera: " + back_path)
 
+func _update_visibilities() -> void:
+	if front_sprite == null or back_sprite == null or selection_rect == null:
+		return
+	front_sprite.visible = is_face_up
+	back_sprite.visible = not is_face_up
+	selection_rect.visible = is_selected
+
 func flip(face_up: bool, animated: bool = true) -> void:
 	if is_face_up == face_up:
 		return
 	
 	is_face_up = face_up
+	
+	if front_sprite == null:
+		return
 	
 	if animated and anim_player.has_animation("flip"):
 		anim_player.play("flip")
@@ -53,7 +67,8 @@ func flip_toggle(animated: bool = true) -> void:
 
 func set_selected(selected: bool) -> void:
 	is_selected = selected
-	selection_rect.visible = is_selected
+	if selection_rect != null:
+		selection_rect.visible = is_selected
 
 func toggle_selected() -> void:
 	set_selected(not is_selected)

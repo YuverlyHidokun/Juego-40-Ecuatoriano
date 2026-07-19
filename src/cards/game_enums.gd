@@ -29,6 +29,24 @@ enum CardSkin {
 	MINIMAL
 }
 
+## Acciones posibles en el turno
+enum PlayAction {
+	PLAY_CARD,
+	CAER,
+	LEVANTAR,
+	SUMAR,
+	LIMPIAR
+}
+
+## Estados del juego
+enum GameState {
+	DRAWING_STARTER,
+	DEALING,
+	PLAYING,
+	COUNTING,
+	GAME_OVER
+}
+
 static func suit_name(suit: Suit) -> String:
 	match suit:
 		Suit.HEARTS:   return "Corazones"
@@ -66,7 +84,7 @@ static func suit_key(suit: Suit) -> String:
 	match suit:
 		Suit.HEARTS:   return "hearts"
 		Suit.DIAMONDS: return "diamonds"
-		Suit.CLUBS:    return "clubs"
+		Suit.CLUBS:    return "club"
 		Suit.SPADES:   return "spades"
 	return "unknown"
 
