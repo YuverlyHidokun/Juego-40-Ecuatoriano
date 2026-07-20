@@ -14,3 +14,8 @@ config/name="Juego del 40"
 run/main_scene="uid://g5gdkmbybbkx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=4
+window/stretch/mode="canvas_items"

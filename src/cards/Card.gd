@@ -77,13 +77,14 @@ func set_interactable(enabled: bool) -> void:
 	is_interactable = enabled
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	print(">>> INPUT EVENT recibido, is_interactable=", is_interactable)
 	if not is_interactable:
 		return
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print(">>> CLICK IZQUIERDO detectado en carta")
 			card_clicked.emit(self)
-			toggle_selected()
 
 func _mouse_enter() -> void:
 	if is_interactable:

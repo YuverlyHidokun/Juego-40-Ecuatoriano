@@ -6,5 +6,4 @@
 [node name="PlayerHand" type="Node2D"]
 script = ExtResource("1_b1pc5")
 card_scene = ExtResource("2_ak0lu")
-card_spacing = 90.0
-max_cards = 5
+card_spacing = 100.0

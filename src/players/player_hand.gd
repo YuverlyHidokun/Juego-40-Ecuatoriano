@@ -5,7 +5,7 @@ signal card_played(card_data: CardData)
 signal hand_changed
 
 @export var card_scene: PackedScene
-@export var card_spacing: float = 100.0
+@export var card_spacing: float = 70.0
 @export var max_cards: int = 5
 
 var cards: Array[Card] = []
@@ -72,11 +72,16 @@ func _arrange_cards() -> void:
 		cards[i].position = Vector2(start_x + i * card_spacing, 0)
 
 func _on_card_clicked(card: Card) -> void:
-	# Solo una carta seleccionada a la vez
-	if selected_card != null and selected_card != card:
-		selected_card.set_selected(false)
-	
-	selected_card = card if card.is_selected else null
+	if selected_card == card:
+		# click de nuevo sobre la misma carta -> deseleccionar
+		card.set_selected(false)
+		selected_card = null
+	else:
+		# deseleccionar la anterior (si había) y seleccionar la nueva
+		if selected_card != null:
+			selected_card.set_selected(false)
+		card.set_selected(true)
+		selected_card = card
 
 func _on_card_hovered(card: Card) -> void:
 	pass
