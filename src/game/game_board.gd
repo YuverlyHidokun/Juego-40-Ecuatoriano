@@ -33,6 +33,7 @@ func _ready() -> void:
 	table = TABLE_SCENE.instantiate()
 	table.position = table_position.position
 	add_child(table)
+	move_child(table, 1)
 
 	player_hand.position = player_hand_position.position
 	opponent_hand.position = opponent_hand_position.position
