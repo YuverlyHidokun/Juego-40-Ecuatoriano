@@ -15,11 +15,11 @@ const CARDS_PER_HAND := 5
 @onready var game_ui: CanvasLayer = $GameUI
 @onready var score_label: Label = $GameUI/ScorePanel/ScoreLabel
 @onready var message_label: Label = $GameUI/MessageLabel
-@onready var caigo_button: Button = $GameUI/ButtonsContainer/CaigoButton
-@onready var limpio_button: Button = $GameUI/ButtonsContainer/LimpioButton
-@onready var pasar_button: Button = $GameUI/ButtonsContainer/PasarButton
-@onready var lanzar_button: Button = $GameUI/ButtonsContainer/LanzarButton
 
+@onready var caigo_button: TextureButton = $GameUI/ActionButtons/CaigoButton
+@onready var limpio_button: TextureButton = $GameUI/ActionButtons/LimpioButton
+@onready var pasar_button: TextureButton = $GameUI/PlayButtons/PasarButton
+@onready var jugar_button: TextureButton = $GameUI/PlayButtons/JugarButton
 var deck: Deck
 var table: Table
 var player_score: int = 0
@@ -38,7 +38,7 @@ func _ready() -> void:
 	player_hand.position = player_hand_position.position
 	opponent_hand.position = opponent_hand_position.position
 
-	lanzar_button.pressed.connect(_on_lanzar_pressed)
+	jugar_button.pressed.connect(_on_lanzar_pressed)
 	pasar_button.pressed.connect(_on_pasar_pressed)
 	caigo_button.pressed.connect(_on_caigo_pressed)
 	limpio_button.pressed.connect(_on_limpio_pressed)
